@@ -1,26 +1,18 @@
 <?php
 /*
-Plugin Name: Your Plugin Name
-Plugin URI: https://github.com/your_name/your_plugin
-Description: One line description of your plugin
+Plugin Name: Always-302 Plugin
+Plugin URI: https://github.com/tinjaw/Always-302
+Description: Send a 302 (temporary) redirect instead of 301 (permanent) for sites where shortlinks may change.
 Version: 1.0
-Author: Your Name
-Author URI: https://your-site-if-any/
+Author: Tinjaw
+Author URI: https://github.com/tinjaw
 */
 
 // No direct call
 if( !defined( 'YOURLS_ABSPATH' ) ) die();
 
-/*
+yourls_add_filter( 'redirect_code', 'tinjaw_302_redirection' );
 
- Your code goes here.
- 
- Suggested read:
- https://github.com/YOURLS/YOURLS/wiki/Plugins
- https://github.com/YOURLS/YOURLS/wiki/How-to-make-Plugins
- https://github.com/YOURLS/YOURLS/wiki/Coding-Standards
- https://github.com/YOURLS/YOURLS/wiki#for-developpers
- 
- Have fun!
- 
-*/
+function tinjaw_302_redirection( $code, $location ) {
+    return 302;
+}
